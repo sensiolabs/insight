@@ -1,39 +1,57 @@
-SensioLabsInsight SDK
-=====================
+<p align="center"><a href="https://insight.symfony.com" target="_blank">
+    <img src="https://insight.symfony.com/bundles/insight/img/logo-github-sdk.svg">
+</a></p>
 
-About
------
+<p align="center">
+    <strong>Build high quality projects. Monitor technical debt efficiently.</strong>
+</p>
 
-This is the official SDK for the SensioLabsInsight API.
+<br />
+
+
+[SymfonyInsight](https://insight.symfony.com) is a **PHP static and dynamic analysis**
+platform, especially well suited to analyse Symfony projects. It helps you monitor and pay back
+technical debt efficiently and it alerts you on critically low levels of quality.
+
+This repository is a PHP SDK and command-line tool you can use to trigger analysis and access
+data from SymfonyInsight in your own infrastructure.
 
 Installation
 ------------
 
-To install the SDK, run the command below and you will get the latest version:
+**Command-line tool installation**
 
-    composer require sensiolabs/insight
+The easiest way to use the SymfonyInsight API is via the built-in command
+line tool. A PHAR version of the command line tool exists to avoid 
+having to install this project.
+
+To install this command line tool, you can download it directly from our servers:
+
+```
+curl -o insight.phar -s https://get.insight.symfony.com/insight.phar
+# or
+wget https://get.insight.symfony.com/insight.phar
+
+# Then
+php insight.phar
+```
+
+**SDK installation**
+
+To install the SDK, use Composer:
+
+```
+composer require symfonycorp/insight
+```
 
 Command Line Tool
 -----------------
-
-The easiest way to use the SensioLabsInsight API is via the built-in command
-line tool.
-
-A phar version of the command line tool exists to avoid installation of this
-project. Download it, then use it like the command line tool:
-
-    $ curl -o insight.phar -s http://get.insight.sensiolabs.com/insight.phar
-    # or
-    $ wget http://get.insight.sensiolabs.com/insight.phar
-
-    # Then
-    $ php insight.phar
 
 List all the projects in your account:
 
     $ php insight.phar projects
 
-The first time, you will be prompted for your SensioLabsInsight API key and
+The first time, you will be prompted for your SymfonyInsight API key and
 user UUID (which can be found under the "Account" section on the website).
 These information are then stored locally, but can still be overridden via the
 `--api-token` and `--user-uuid` options.
@@ -52,7 +70,7 @@ To export an analysis report:
 Configuration
 -------------
 
-    use SensioLabs\Insight\Sdk\Api;
+    use SymfonyCorp\Insight\Sdk\Api;
 
     $api = new Api(array(
         'api_token' => 'your api token',
@@ -108,7 +126,7 @@ Note: If something went wrong, see *Error management* section
 
 ### Post a project
 
-    use SensioLabs\Insight\Sdk\Model\Project;
+    use SymfonyCorp\Insight\Sdk\Model\Project;
 
     $project = new Project();
     $project
@@ -144,26 +162,27 @@ Note: If something went wrong, see *Error management* section
 ### Error management
 
 If something went wrong, an
-`SensioLabs\Insight\Sdk\Exception\ExceptionInterface` will be throw:
+`SymfonyCorp\Insight\Sdk\Exception\ExceptionInterface` will be throw:
 
 * `ApiClientException` If you did something wrong. This exception contains the
   previous exception throw by guzzle. You can easily check if it is a:
   * 403: In this case, check your credentials
   * 404: In this case, check your request
   * 400: In this case, check the data sent. In this case, the Exception will
-    contains a `SensioLabs\Insight\Sdk\Model\Error` object. Which will contains
+    contains a `SymfonyCorp\Insight\Sdk\Model\Error` object. Which will contains
     all form errors.
 * `ApiServerException` If something went wrong with the API.
 
 Jenkins/Hudson Integration
 --------------------------
-Thanks to [Jenkins PMD Plugin](https://wiki.jenkins-ci.org/display/JENKINS/PMD+Plugin) and SensioLabsInsight SDK PMD output you can easily
-embed SensioLabsInsight reports into your build workflow, following these steps:
 
-*It is assumed you already have your project up and building in Jenkins and SensioLabsInsight SDK installed*
+Thanks to [Jenkins PMD Plugin](https://wiki.jenkins-ci.org/display/JENKINS/PMD+Plugin) and SymfonyInsight SDK PMD output you can easily
+embed SymfonyInsight reports into your build workflow, following these steps:
 
-1. Retrieve your `SensioLabsInsight API Token`, `User UUID` and `Project UUID`
-on your [account page](https://insight.sensiolabs.com/account)
+*It is assumed you already have your project up and building in Jenkins and SymfonyInsight SDK installed*
+
+1. Retrieve your `SymfonyInsight API Token`, `User UUID` and `Project UUID`
+on your [account page](https://insight.symfony.com/account)
 2. Install the Jenkins `PMD plugin`:
 [How to install a jenkins plugin](https://wiki.jenkins-ci.org/display/JENKINS/Plugins#Plugins-Howtoinstallplugins)
 3. Optionally you can also install the `EnvInject  Plugin`

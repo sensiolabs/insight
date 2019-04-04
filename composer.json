@@ -1,14 +1,19 @@
 {
-    "name": "sensiolabs/insight",
-    "description": "SensioLabs Insight SDK",
+    "name": "symfonycorp/insight",
+    "description": "SymfonyInsight SDK",
     "license": "MIT",
     "authors": [
         {
             "name": "Grégoire Pineau",
             "email": "lyrixx@lyrixx.info"
+        },
+        {
+            "name": "Titouan Galopin",
+            "email": "titouan.galopin@symfony.com"
         }
     ],
     "require": {
+        "php": ">7.1",
         "guzzle/http": "~3.7",
         "jms/serializer": "0.12.*",
         "psr/log": "~1.0",
@@ -25,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "SensioLabs\\Insight\\": ""
+            "SymfonyCorp\\Insight\\": ""
         }
     },
     "bin": ["bin/insight"],
     "extra": {
         "branch-alias": {
-            "dev-master": "1.5.x-dev"
+            "dev-master": "2.0.x-dev"
         }
     }
 }

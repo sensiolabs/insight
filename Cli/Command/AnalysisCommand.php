@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of the SensioLabsInsight package.
+ * This file is part of the SymfonyInsight package.
  *
- * (c) SensioLabs <contact@sensiolabs.com>
+ * (c) Symfony <support@symfony.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Insight\Cli\Command;
+namespace SymfonyCorp\Insight\Cli\Command;
 
-use SensioLabs\Insight\Cli\Helper\DescriptorHelper;
+use SymfonyCorp\Insight\Cli\Helper\DescriptorHelper;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -52,7 +52,7 @@ class AnalysisCommand extends Command implements NeedConfigurationInterface
         }
 
         if (!$expr = $input->getOption('fail-condition')) {
-            return;
+            return 0;
         }
 
         return $this->getHelperSet()->get('fail_condition')->evaluate($analysis, $expr);

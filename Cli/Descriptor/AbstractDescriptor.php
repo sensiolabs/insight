@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of the SensioLabsInsight package.
+ * This file is part of the SymfonyInsight package.
  *
- * (c) SensioLabs <contact@sensiolabs.com>
+ * (c) Symfony <support@symfony.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Insight\Cli\Descriptor;
+namespace SymfonyCorp\Insight\Cli\Descriptor;
 
-use SensioLabs\Insight\Sdk\Model\Analysis;
-use SensioLabs\Insight\Sdk\Model\Violation;
+use SymfonyCorp\Insight\Sdk\Model\Analysis;
+use SymfonyCorp\Insight\Sdk\Model\Violation;
 
 abstract class AbstractDescriptor
 {
